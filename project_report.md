@@ -220,5 +220,3 @@ The code is organized, well-documented, and follows best practices for web devel
 ![Screenshot](./screenshots/4.png)
 ![Screenshot](./screenshots/5.png)
 ![Screenshot](./screenshots/6.png)
-
-test
