@@ -16,7 +16,7 @@ A full-stack web application for creating and studying flashcards, built with Fl
 
 - **Backend**: Flask with SQLAlchemy
 - **Frontend**: HTML, CSS, JavaScript
-- **Database**: MySQL
+- **Database**: MySQLLite
 
 ## Installation and Setup
 
