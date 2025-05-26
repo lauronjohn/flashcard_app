@@ -78,3 +78,11 @@ A full-stack web application for creating and studying flashcards, built with Fl
 - `PUT /api/flashcards/<id>` - Update an existing flashcard
 - `DELETE /api/flashcards/<id>` - Delete a flashcard
 - `POST /api/flashcards/<id>/review` - Mark a flashcard as reviewed
+
+## Screenshots 
+![Screenshot](./screenshots/1.png)
+![Screenshot](./screenshots/2.png)
+![Screenshot](./screenshots/3.png)
+![Screenshot](./screenshots/4.png)
+![Screenshot](./screenshots/5.png)
+![Screenshot](./screenshots/6.png)
