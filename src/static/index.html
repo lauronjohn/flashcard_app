@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John's Flashcard Web App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <i class="fas fa-brain brand-icon"></i>
+                <h1>John's FlashCard WebApp</h1>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item active" data-page="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </li>
+                <li class="navbar-item" data-page="cards">
+                    <i class="fas fa-layer-group"></i>
+                    <span>My Cards</span>
+                </li>
+                <li class="navbar-item" data-page="study">
+                    <i class="fas fa-book"></i>
+                    <span>Study</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Home Page -->
+        <div id="home-page" class="page active-page">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h2>Welcome to John's FlashCard Web Application</h2>
+                    <p>The smart way to create and study flashcards</p>
+                    <button id="get-started-btn" class="primary-btn">
+                        <i class="fas fa-rocket"></i> Get Started
+                    </button>
+                </div>
+                <div class="hero-image">
+                    <i class="fas fa-lightbulb hero-icon"></i>
+                </div>
+            </div>
+            
+            <div class="features-section">
+                <h3>Features</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-plus-circle feature-icon"></i>
+                        <h4>Create Cards</h4>
+                        <p>Easily create flashcards with questions and answers</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-tags feature-icon"></i>
+                        <h4>Organize</h4>
+                        <p>Group your flashcards by categories</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-sync-alt feature-icon"></i>
+                        <h4>Study Mode</h4>
+                        <p>Flip cards and track your progress</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-section">
+                <h3>Your Progress</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span id="total-cards-count" class="stat-number">0</span>
+                        <span class="stat-label">Total Cards</span>
+                    </div>
+                    <div class="stat-card">
+                        <span id="categories-count" class="stat-number">0</span>
+                        <span class="stat-label">Categories</span>
+                    </div>
+                    <div class="stat-card">
+                        <span id="reviewed-count" class="stat-number">0</span>
+                        <span class="stat-label">Cards Reviewed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards Page -->
+        <div id="cards-page" class="page">
+            <header class="page-header">
+                <h2>My Flashcards</h2>
+                <button id="new-card-btn" class="primary-btn">
+                    <i class="fas fa-plus"></i> New Card
+                </button>
+            </header>
+
+            <!-- Category Filter -->
+            <div class="category-filter">
+                <label for="category-select">Filter by category:</label>
+                <select id="category-select">
+                    <option value="">All Categories</option>
+                    <!-- Categories will be populated dynamically -->
+                </select>
+            </div>
+
+            <!-- Flashcards Container -->
+            <div id="flashcards-container" class="flashcards-container">
+                <!-- Flashcards will be added here dynamically -->
+                <div class="empty-state">
+                    <i class="fas fa-lightbulb empty-icon"></i>
+                    <p>No flashcards yet. Create your first one!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Study Page -->
+        <div id="study-page" class="page">
+            <header class="page-header">
+                <h2>Study Mode</h2>
+            </header>
+
+            <!-- Study Setup Section -->
+            <div id="study-setup" class="study-setup">
+                <div class="form-group">
+                    <label for="study-category-select">Select category to study:</label>
+                    <select id="study-category-select">
+                        <option value="">All Categories</option>
+                        <!-- Categories will be populated dynamically -->
+                    </select>
+                </div>
+                <button id="start-study-btn" class="primary-btn">
+                    <i class="fas fa-play"></i> Start Studying
+                </button>
+            </div>
+
+            <div id="study-container" class="study-container hidden">
+                <div class="study-controls">
+                    <span id="progress-indicator">Card 0 of 0</span>
+                    <div class="study-buttons">
+                        <button id="prev-btn" class="nav-btn" disabled>
+                            <i class="fas fa-chevron-left"></i> Previous
+                        </button>
+                        <button id="next-btn" class="nav-btn" disabled>
+                            Next <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="study-card" class="flashcard study-card">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <p class="question">Click "Next" to start studying</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <p class="answer">The answer will appear here</p>
+                            <div class="learning-status-buttons">
+                                <button id="know-btn" class="status-btn know-btn">
+                                    <i class="fas fa-check"></i> Know
+                                </button>
+                                <button id="still-learning-btn" class="status-btn learning-btn">
+                                    <i class="fas fa-sync"></i> Still Learning
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="exit-study-btn" class="secondary-btn">
+                    <i class="fas fa-times"></i> Exit Study Mode
+                </button>
+            </div>
+        </div>
+
+        <!-- New Card Modal -->
+        <div id="new-card-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-title">Create New Flashcard</h2>
+                    <button id="close-modal-btn" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="flashcard-form">
+                        <input type="hidden" id="card-id">
+                        <div class="form-group">
+                            <label for="question">Question:</label>
+                            <textarea id="question" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="answer">Answer:</label>
+                            <textarea id="answer" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category:</label>
+                            <input type="text" id="category" placeholder="e.g., Math, Science, History">
+                        </div>
+                        <div class="form-group">
+                            <label for="difficulty">Difficulty:</label>
+                            <select id="difficulty">
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" id="save-card-btn" class="primary-btn">Save</button>
+                            <button type="button" id="cancel-btn" class="secondary-btn">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div id="confirm-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Confirm Deletion</h2>
+                    <button id="close-confirm-btn" class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this flashcard?</p>
+                    <div class="form-actions">
+                        <button id="confirm-delete-btn" class="danger-btn">Delete</button>
+                        <button id="cancel-delete-btn" class="secondary-btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay for modals -->
+        <div id="overlay" class="overlay hidden"></div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
