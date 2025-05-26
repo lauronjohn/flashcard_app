@@ -213,4 +213,11 @@ This flashcard web application successfully implements both frontend and backend
 
 The code is organized, well-documented, and follows best practices for web development. The application can be accessed directly through the HTML entry point (`src/static/index.html`) when the Flask server is running, meeting the requirement for direct access to the webpage.
 
-The application is also deployed and accessible online at: https://4nghki1c5zo9.manus.space
+## Screenshots 
+![Screenshot](./screenshots/1.png)
+![Screenshot](./screenshots/2.png)
+![Screenshot](./screenshots/3.png)
+![Screenshot](./screenshots/4.png)
+![Screenshot](./screenshots/5.png)
+![Screenshot](./screenshots/6.png)
+
